@@ -1,0 +1,11 @@
+-- CREATE TABLE IF NOT EXISTS User (
+--   id INTEGER PRIMARY KEY AUTOINCREMENT,
+--   name TEXT NOT NULL,
+--   email TEXT UNIQUE NOT NULL,
+--   password TEXT NOT NULL,
+--   type INTEGER DEFAULT 0
+-- );
+-- UPDATE User
+-- SET type = 1
+-- WHERE email = 'Admin@gmail.com';
+ALTER TABLE User ADD COLUMN image TEXT DEFAULT 'default-avatar.png';

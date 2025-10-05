@@ -1,0 +1,177 @@
+$primary-color: #000;
+$border-color: #333;
+
+
+.avatar-wrapper {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  overflow: hidden; /* บังคับรูปให้เป็นวงกลม */
+  border: 2px solid $border-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9; /* พื้นหลังอ่อนตอนยังไม่มีรูป */
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ครอบเต็มพื้นที่โดยไม่บิดรูป */
+  border-radius: 50%;
+}
+
+.profile-icon {
+  font-size: 100px;
+  color: $border-color;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+.profile-layout-card {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  border: 1px solid $border-color; /* ขอบหลักรอบเนื้อหาทั้งหมด */
+  padding: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+// ------------------------------------
+// 2.1 คอลัมน์ซ้าย: User Info
+// ------------------------------------
+.profile-info-column {
+  flex: 1; /* กินพื้นที่ 1 ส่วน */
+  padding: 30px;
+  border-right: 1px solid $border-color; /* เส้นแบ่งคอลัมน์ */
+
+  .avatar-section {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .profile-icon {
+      font-size: 80px;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 10px;
+    }
+
+    .display-name {
+      margin: 10px 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid $border-color;
+      width: 80%;
+      margin: 20px auto;
+    }
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+
+    .detail-icon {
+      margin-right: 10px;
+      color: $primary-color;
+      font-size: 20px;
+    }
+    p {
+        margin: 0;
+    }
+  }
+
+  .divider-small {
+    border: none;
+    border-top: 1px solid $border-color;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+
+    .edit-btn, .billing-btn {
+      padding: 5px 15px;
+      border: 1px solid $primary-color;
+      border-radius: 0;
+      font-size: 14px;
+      // mat-stroked-button
+    }
+  }
+}
+
+// ------------------------------------
+// 2.2 คอลัมน์ขวา: My Library
+// ------------------------------------
+.my-library-column {
+  flex: 2; /* กินพื้นที่ 2 ส่วน */
+  padding: 30px;
+
+  .library-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .game-item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .game-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee; /* เส้นแบ่งรายการเกม */
+    padding-bottom: 15px;
+    
+    &:last-child {
+        border-bottom: none; /* รายการสุดท้ายไม่ต้องมีเส้นแบ่ง */
+        padding-bottom: 0;
+    }
+
+    .game-placeholder-icon {
+        font-size: 50px;
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+        color: #999;
+    }
+
+    .game-details {
+      flex-grow: 1;
+
+      .game-title {
+        font-weight: bold;
+        margin: 0 0 5px 0;
+      }
+      .game-metadata {
+        font-size: 13px;
+        color: #666;
+        margin: 0;
+      }
+    }
+
+    .download-button {
+      background-color: $primary-color;
+      color: #fff;
+      padding: 5px 20px;
+      // mat-flat-button
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="view-user-container">
+    <h1 class="page-title">Manage Users</h1>
+    
+    <div class="user-card-list" *ngFor="let user of [1, 2, 3, 4]">
+        <mat-card class="user-card">
+            <div class="user-info-main">
+                <mat-icon class="profile-icon">account_circle</mat-icon>
+                <div class="user-details">
+                    <p class="user-id">ID: {{ user }}</p>
+                    <p class="user-name">Name: UserTest</p>
+                </div>
+            </div>
+
+            <div class="user-actions">
+                <button mat-stroked-button class="action-button view-button">View</button>
+                <button mat-flat-button class="action-button delete-button">Delete Data</button>
+                
+                <button mat-stroked-button class="action-button delete-small-button">Delete</button>
+            </div>
+        </mat-card>
+    </div>
+
+</div>

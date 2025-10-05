@@ -1,0 +1,96 @@
+<main class="profile-container">
+    <div class="profile-layout-card">
+
+        <!-- Profile Information Column -->
+        <div class="profile-info-column">
+            <div class="info-card">
+                <div class="avatar-section">
+                    <!-- แสดงรูปโปรไฟล์ถ้ามี -->
+                    <div class="avatar-wrapper">
+                        <img *ngIf="user?.image; else defaultAvatar" [src]="'http://localhost:3000' + user.image"
+                            class="profile-avatar" alt="Profile Image" />
+                        <ng-template #defaultAvatar>
+                            <mat-icon class="profile-icon">account_circle</mat-icon>
+                        </ng-template>
+                    </div>
+
+                    <!-- fallback icon -->
+                    <ng-template #defaultAvatar>
+                        <mat-icon class="profile-icon">account_circle</mat-icon>
+                    </ng-template>
+
+                    <h2 class="display-name">{{ user?.name || 'Guest User' }}</h2>
+                    <hr class="divider">
+                </div>
+
+                <div class="contact-detail">
+                    <mat-icon class="detail-icon">email</mat-icon>
+                    <p>{{ user?.email || 'No email provided' }}</p>
+                </div>
+
+                <div class="contact-detail">
+                    <mat-icon class="detail-icon">badge</mat-icon>
+                    <p>{{ user?.type === 0 ? 'Regular User' : 'Administrator' }}</p>
+                </div>
+
+                <div class="contact-detail">
+                    <mat-icon class="detail-icon">info</mat-icon>
+                    <p>User ID: {{ user?.id || 'N/A' }}</p>
+                </div>
+
+                <hr class="divider-small">
+
+                <div class="action-buttons">
+                    <button (click)="onEdit()" mat-stroked-button class="edit-btn">
+                        <mat-icon>edit</mat-icon>
+                        Edit Profile
+                    </button>
+                    <button (click)="onSignOut()" mat-stroked-button class="signout-btn">
+                        <mat-icon>logout</mat-icon>
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Library Column -->
+        <div class="my-library-column">
+            <div class="library-card">
+                <h2 class="library-title">
+                    <mat-icon class="library-icon">library_books</mat-icon>
+                    My Library
+                </h2>
+
+                <div class="game-item-list">
+                    <!-- Show message if no games -->
+                    <div class="no-games" *ngIf="userGames.length === 0">
+                        <mat-icon class="empty-icon">videogame_asset_off</mat-icon>
+                        <p>No games in your library yet</p>
+                    </div>
+
+                    <!-- Game items -->
+                    <div class="game-item" *ngFor="let game of userGames">
+                        <div class="game-image-wrapper">
+                            <img *ngIf="game.imageUrl; else gamePlaceholder" [src]="game.imageUrl"
+                                alt="{{ game.title }}">
+                        </div>
+                        <ng-template #gamePlaceholder>
+                            <mat-icon class="game-placeholder-icon">videogame_asset</mat-icon>
+                        </ng-template>
+
+                        <div class="game-details">
+                            <p class="game-title">{{ game.title }}</p>
+                            <p class="game-metadata">{{ getGenresText(game.genres) }}</p>
+                        </div>
+                        <button mat-flat-button class="download-button" (click)="onDownload(game)">
+                            <mat-icon>download</mat-icon>
+                            Download
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</main>

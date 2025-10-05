@@ -1,0 +1,97 @@
+$primary-color: #000;
+$card-border-color: #888;
+$delete-color: #ff1900;
+
+.view-user-container {
+    padding: 40px 60px;
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.user-card-list {
+    margin-bottom: 20px;
+}
+
+.user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid $card-border-color; /* เส้นขอบหนาตามภาพ */
+    border-radius: 8px;
+    box-shadow: none; /* ลบ shadow มาตรฐานของ mat-card ออก */
+    max-width: 800px; /* กำหนดความกว้างของแต่ละการ์ด */
+    margin: 0 auto 20px auto; 
+
+    .user-info-main {
+        display: flex;
+        align-items: center;
+        flex-grow: 1; /* ให้พื้นที่เต็มที่สำหรับข้อมูล */
+
+        .profile-icon {
+            font-size: 50px;
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            color: $card-border-color; /* สีไอคอนตามภาพ */
+        }
+
+        .user-details {
+            p {
+                margin: 0;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .user-id {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .user-actions {
+        display: grid;
+        grid-template-areas: 
+            "view delete_data"
+            "delete_small delete_small";
+        grid-gap: 10px;
+        align-items: center;
+        margin-left: 20px;
+        min-width: 200px; /* กำหนดความกว้างขั้นต่ำของส่วนปุ่ม */
+        
+        .action-button {
+            padding: 5px 15px;
+            font-size: 14px;
+            border-radius: 4px;
+            min-width: 90px;
+        }
+
+        .view-button {
+            grid-area: view;
+            border: 1px solid $primary-color;
+            color: $primary-color;
+        }
+
+        .delete-button {
+            grid-area: delete_data;
+            background-color: #d1d1d1; /* สีเทาอ่อนตามภาพ */
+            color: $primary-color;
+            border: 1px solid #d1d1d1;
+        }
+        
+        .delete-small-button {
+            grid-area: delete_small;
+            border: 1px solid #d1d1d1;
+            background-color: #d1d1d1;
+            color: $primary-color;
+        }
+    }
+}
